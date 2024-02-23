@@ -1,0 +1,28 @@
+public static List<Integer> getElements(List<Integer> arr, List<List<Integer>> queries) {
+        List<Integer> result = new ArrayList<>();
+        
+        if(arr==null||arr.isEmpty()){
+            return  result;
+        }
+        
+        int rowLength = arr.get(0);
+        
+        
+        for(List<Integer> query : queries){
+            
+            int row = query.get(0)-1;
+            int col = query.get(1)-1;
+            
+            int index = 1+row*rowLength + col;
+            
+            if(row>=0 && col>=0 && index<arr.size()){
+                result.add(arr.get(index));
+            }else{
+                result.add(null);
+            }
+        }
+        
+        return result;
+    }
+ 
+}
