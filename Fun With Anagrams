@@ -1,0 +1,32 @@
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+ 
+public class AnagramFilter {
+ 
+    public static List<String> funWithAnagrams(List<String> text) {
+        Map<String, Boolean> seen = new HashMap<>();
+        List<String> result = new ArrayList<>();
+ 
+        for (String str : text) {
+            String sortedStr = str.chars()
+                                   .sorted()
+                                   .collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append)
+                                   .toString();
+            if (!seen.containsKey(sortedStr)) {
+                seen.put(sortedStr, true);
+                result.add(str); // Add the original string to the result
+            }
+        }
+ 
+        return result.stream().sorted().collect(Collectors.toList());
+    }
+ 
+    public static void main(String[] args) {
+        List<String> input = List.of("aaagmnrs", "anagrams", "code", "doce");
+        List<String> result = funWithAnagrams(input);
+        System.out.println(result); 
+    }
+}
