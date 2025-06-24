@@ -17,8 +17,16 @@ public class Solution {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
 
         String n = bufferedReader.readLine();
+
+//if you want to do this for int 
+
+        int num = 16;
+        BigInteger big = BigInteger.valueOf(num);
+
+        if(big.isProbablePrime(10))
         
-        if(new BigInteger(n).isProbablePrime(2))
+        if(new BigInteger(n).isProbablePrime(10))
+//input param is certainity - 10 gives 1 in 2^10 chances of false value
         System.out.println("prime");
         else
         System.out.println("not prime");
